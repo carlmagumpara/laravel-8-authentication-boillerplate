@@ -27,7 +27,7 @@
         <td>{{ $data->contact_no ?? 'N/A' }}</td>
         <td>{{ $data->date_of_birth ?? 'N/A' }}</td>
         <td>{{ $data->deleted_at ? 'Deleted' : $data->status }}</td>
-        <td>{{ $data->deleted_at }}</td>
+        <td>{{ $data->deleted_at ?? 'N/A' }}</td>
         <td>
           @if($data->deleted_at)
             @include('shared.restore-item', ['class' => 'w-100', 'type' => 'User', 'id' => $data->id, 'url' => route('user.restore')])

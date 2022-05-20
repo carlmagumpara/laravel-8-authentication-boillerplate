@@ -40,7 +40,7 @@
           </li>
           @endif
         @else
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown d-none d-sm-none d-md-block">
           <a id="navbarDropdown" class="nav-link dropdown-toggle me-3" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
           <img src="{{ Auth::user()->photo }}" width="30" height="30" class="rounded-circle mx-2 bg-secondary">
           {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <br />

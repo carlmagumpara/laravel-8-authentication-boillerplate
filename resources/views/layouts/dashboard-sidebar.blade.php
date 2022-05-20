@@ -40,6 +40,15 @@
         <span class="ms-2">Profile</span>
       </a>
     </li>
+    <li>
+      <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-2').submit();" class="nav-link link-dark">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span class="ms-2">Logout</span>
+      </a>
+    </li>
   </ul>
+  <form id="logout-form-2" action="{{ route('logout') }}" method="POST" class="d-none">
+    @csrf
+  </form>
   <hr>
 </nav>
