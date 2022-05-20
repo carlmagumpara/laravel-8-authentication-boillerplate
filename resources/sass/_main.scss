@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+
+:root{
+  --bs-teal:#2EC4B6;
+  --bs-lightTeal:#50e2d4;
+  --bs-yellow: #FF9F1C;
+  --bs-lightyellow: #FFBF69;
+  --bs-gradient: linear-gradient(90deg, var(--bs-teal), var(--bs-lightTeal));
+  --bs-gradient2: linear-gradient(90deg, var(--bs-yellow), var(--bs-lightyellow));
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin:0; padding:0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none; border:none;
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: 0;
+    transform: rotateX(-10deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
+body {
+  padding-top: 63px;
+  // padding-top: 78px;
+  background-color: #FFFFFF;
+}
+
+#content.dashboard {
+  background-color: #f5f5f5;
+}
+
+.app-main {
+  animation: transitionIn 0.75s;
+}
+
+.custom-nav {
+  .nav-link {
+    font-size: 16px;
+  }
+}
+
+.wrapper {
+  width: 100%;
+}
+
+#sidebar {
+  min-width: 300px;
+  max-width: 300px;
+  color: #fff;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative;
+  background-color: #fff;
+}
+#sidebar.active {
+  margin-left: -300px;
+}
+@media (max-width: 991.98px) {
+  #sidebar {
+    margin-left: -300px;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #sidebar .custom-menu {
+    margin-right: -60px !important;
+    top: 10px !important;
+  }
+}
+#sidebar .custom-menu {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: -10px;
+  margin-right: -35px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+@media (prefers-reduced-motion: reduce) {
+  #sidebar .custom-menu {
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+}
+#sidebar .custom-menu .btn.btn-primary {
+  background: #2f89fc;
+  border-color: transparent;
+  position: relative;
+  color: #000;
+  width: 30px;
+  height: 30px;
+}
+#sidebar .custom-menu .btn.btn-primary:after,
+#sidebar .custom-menu .btn.btn-primary:before {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: "FontAwesome";
+  color: #fff;
+}
+#sidebar .custom-menu .btn.btn-primary:after {
+  content: "\f0c9";
+  left: 2px;
+}
+
+.bg-wrap {
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+.bg-wrap:after {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  background: #000;
+  opacity: 0.3;
+}
+.bg-wrap .user-logo .img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@media (max-width: 991.98px) {
+  #sidebarCollapse span {
+    display: none;
+  }
+}
+
+#content {
+  width: 100%;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.zoom-on-hover {
+  transition: transform .2s;
+
+  /* Animation */
+  margin: 0 auto;
+
+  &:hover {
+    transform: scale(1.1);
+
+    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+}
+
+#imageUpload {
+  display: none;
+}
+
+#profileImage {
+  cursor: pointer;
+}
+
+#profile-container {
+  &:hover .profile-photo-icon {
+    display: block;
+  }
+
+  .profile-photo-icon {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    i {
+      font-size: 30px;
+    }
+  }
+
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+
+  img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.image-container {
+  .image-buttons {
+    display: none;
+  }
+  &:hover {
+    .image-buttons {
+      display: block;
+    }
+  }
+}
+
+.card-img-top-custom {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.counter {
+  background-color:#ffffff;
+  padding: 20px 0;
+  border-radius: 5px;
+}
+
+.count-title {
+  font-size: 40px;
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.count-text {
+  font-size: 13px;
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.fa-2x {
+  margin: 0 auto;
+  float: none;
+  display: table;
+  color: #4ad1e5;
+  height: 50px;
+}
