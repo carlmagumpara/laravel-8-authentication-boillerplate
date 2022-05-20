@@ -2,8 +2,8 @@
   <div class="{{ !$dashboard ? 'container' : 'container-fluid' }}">
     @if($dashboard)
     <div class="custom-menu me-3">
-      <button type="button" id="sidebarCollapse" class="btn btn-primary">
-        <i class="fa fa-bars"></i>
+      <button type="button" id="sidebarCollapse" class="btn btn-link text-decoration-none">
+        <i class="fa fa-bars"></i>{{'  '}}Menu
       </button>
     </div>
     @endif
