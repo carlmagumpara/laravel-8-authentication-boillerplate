@@ -8,6 +8,10 @@ class LandingController extends Controller
 {
     public function index(Request $request)
     {
-        return view('index', []);
+        if(auth()->check()) {
+            return redirect(route('dashboard.index'));
+        }
+
+        return redirect(route('login'));
     }
 }

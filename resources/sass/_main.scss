@@ -20,9 +20,8 @@
 @keyframes transitionIn {
   from {
     opacity: 0;
-    transform: rotateX(-10deg);
+    transform: rotateX(50deg);
   }
-
   to {
     opacity: 1;
     transform: rotateX(0);
@@ -265,7 +264,7 @@ a[data-toggle="collapse"] {
 }
 
 .fa-2x {
-  margin: 0 auto;
+  // margin: 0 auto;
   float: none;
   display: table;
   color: #4ad1e5;

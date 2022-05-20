@@ -12,6 +12,13 @@ class DashboardController extends Controller
 
     public function index(Request $request)
     {
+        if (auth()->user()->role->slug === 'admin') {
+          return view('dashboard.index', [
+              'users_count' => User::where(['role_id' => 3])->count(),
+              'chart' => $this->adminChartData(),
+          ]);
+        }
+
         return view('dashboard.index', []);
     }
 }

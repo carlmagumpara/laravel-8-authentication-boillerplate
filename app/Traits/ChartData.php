@@ -34,8 +34,7 @@ trait ChartData
         return [
             'eightMonths' => json_encode($this->generateMonthData($count)),
             'eightMonthsData' => json_encode([
-                'Students' => $this->generateData('Users', $count, new User, true, ['role_id' => 3]),
-                'Teachers' => $this->generateData('Users', $count, new User, true, ['role_id' => 2]),
+                'Users' => $this->generateData('Users', $count, new User, true, ['role_id' => 3]),
             ])
         ];
     }
