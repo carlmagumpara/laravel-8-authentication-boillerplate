@@ -9,19 +9,19 @@
     @if(Auth::user()->role->slug === 'admin')
     <li>
       <a href="{{ route('user.list', 'users') }}" class="nav-link link-dark {{ (Route::currentRouteName() === 'user.list' && request()->type === 'users') ? 'active' : '' }}">
-        <i class="fas fa-user"></i>
+        <i class="fas fa-users"></i>
         <span class="ms-2">Users</span>
       </a>
     </li>
     <li>
       <a href="{{ route('user.list', 'staffs') }}" class="nav-link link-dark {{ (Route::currentRouteName() === 'user.list' && request()->type === 'staffs') ? 'active' : '' }}">
-        <i class="fas fa-user"></i>
+        <i class="fas fa-user-tie"></i>
         <span class="ms-2">Staffs</span>
       </a>
     </li>
     <li>
       <a href="{{ route('user.list', 'admins') }}" class="nav-link link-dark {{ (Route::currentRouteName() === 'user.list' && request()->type === 'admins') ? 'active' : '' }}">
-        <i class="fas fa-user"></i>
+        <i class="fas fa-users-cog"></i>
         <span class="ms-2">Admins</span>
       </a>
     </li>
@@ -34,13 +34,13 @@
       </a>
     </li>
     @endif
-    <li>
+    <li class="d-sm-block d-md-none d-lg-none">
       <a href="{{ route('profile.index') }}" class="nav-link link-dark {{ Route::currentRouteName() === 'profile.index' ? 'active' : '' }}">
         <i class="fa fa-user"></i>
         <span class="ms-2">Profile</span>
       </a>
     </li>
-    <li>
+    <li class="d-sm-block d-md-none d-lg-none">
       <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-2').submit();" class="nav-link link-dark">
         <i class="fa-solid fa-right-from-bracket"></i>
         <span class="ms-2">Logout</span>

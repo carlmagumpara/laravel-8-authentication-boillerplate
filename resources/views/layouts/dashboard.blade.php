@@ -17,7 +17,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('styles')
   </head>
-  <body>
+  <body class="dark">
     <div id="app">
       <div class="wrapper d-flex align-items-stretch">
         @if(Route::currentRouteName() !== 'quiz.questions.question')

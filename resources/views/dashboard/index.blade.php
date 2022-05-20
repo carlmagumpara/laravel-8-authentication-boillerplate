@@ -62,14 +62,13 @@
         </div>
         <div class="card-body">
           <div class="chart-area">
-            <canvas id="admin-dbchart" style="height: 500px"></canvas>
+            <canvas id="admin-dbchart" style="height: 300px"></canvas>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 @section('javascript')
 <script type="text/javascript">
   window.eightMonths = {!! $chart['eightMonths'] !!};

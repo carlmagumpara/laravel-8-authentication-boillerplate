@@ -20,11 +20,11 @@
 @keyframes transitionIn {
   from {
     opacity: 0;
-    transform: rotateX(50deg);
+    // transform: rotateX(50deg);
   }
   to {
     opacity: 1;
-    transform: rotateX(0);
+    // transform: rotateX(0);
   }
 }
 

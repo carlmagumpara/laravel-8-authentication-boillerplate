@@ -18,7 +18,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('styles')
   </head>
-  <body>
+  <body class="dark">
     <div id="app">
       @include('layouts.app-nav', [
       'dashboard' => false

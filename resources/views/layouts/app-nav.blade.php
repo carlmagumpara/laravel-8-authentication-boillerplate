@@ -1,7 +1,7 @@
 <nav id="navbar-example2" class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top custom-nav">
   <div class="{{ !$dashboard ? 'container' : 'container-fluid' }}">
     @if($dashboard)
-    <div class="custom-menu me-3 d-md-none d-lg-none">
+    <div class="custom-menu me-3">
       <button type="button" id="sidebarCollapse" class="btn btn-primary">
         <i class="fa fa-bars"></i>
       </button>
@@ -9,11 +9,8 @@
     @endif
     <a class="navbar-brand" href="{{ route('index') }}">
       <!-- <img src="{{ asset('images/main-logo.png') }}" width="50"> -->
-      {{ config('app.name', 'Laravel') }}
+      {{ config('app.short-name', 'Laravel') }}
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-    <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav me-auto">
@@ -40,7 +37,7 @@
           </li>
           @endif
         @else
-        <li class="nav-item dropdown d-none d-sm-none d-md-block">
+        <li class="nav-item dropdown d-none d-sm-none d-md-block d-lg-block">
           <a id="navbarDropdown" class="nav-link dropdown-toggle me-3" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
           <img src="{{ Auth::user()->photo }}" width="30" height="30" class="rounded-circle mx-2 bg-secondary">
           {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <br />
