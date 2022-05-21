@@ -35,6 +35,7 @@
         <h1><i class="fas fa-spinner"></i></h1>
       </div>
     </div>
+    @include('shared.socket')
     @yield('javascript')
   </body>
 </html>

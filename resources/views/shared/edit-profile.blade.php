@@ -1,8 +1,6 @@
 <div class="row mb-3">
-  <div class="col-md-8 offset-md-2">
-    <div class="mt-4">
-      @include('shared.profile-pic')
-    </div>
+  <div class="col-md-8">
+    <h5>Profile</h5>
     <form class="mt-4" method="POST" action="{{ route('profile.update.user') }}" data-ajax="true">
       @csrf
       @include('generate.input', [
@@ -21,7 +19,14 @@
         'label' => 'Middle Name',
         'name' => 'middle_name',
         'value' => auth()->user()->middle_name,
-        'formGroupClass' => 'mb-3'
+        'formGroupClass' => 'mb-3',
+      ])
+      @include('generate.input', [
+        'label' => 'Email',
+        'name' => '',
+        'value' => auth()->user()->email,
+        'formGroupClass' => 'mb-3',
+        'disabled' => true,
       ])
       @include('generate.input', [
         'label' => 'Contact No.',
@@ -61,5 +66,15 @@
         </button>
       </div>
     </form>
+  </div>
+  <div class="col-md-4">
+    <h5>Select Photo</h5>
+    <div class="mt-4">
+      @include('shared.profile-pic')
+    </div>
+    <div class="text-center">
+      <p class="mb-0">File size: maximum 1 MB</p>
+      <p>File extension: .JPEG, .PNG</p>
+    </div>
   </div>
 </div>

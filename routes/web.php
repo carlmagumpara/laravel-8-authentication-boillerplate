@@ -31,7 +31,8 @@ use App\Http\Controllers\{
     LeaderboardController,
     TakeController,
     QuizCategoryController,
-    FaqController
+    FaqController,
+    SocketController,
 };
 
 // Public
@@ -113,6 +114,9 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+
+    // Route::post('broadcasting/auth', [SocketController::class, 'broadcastingPrivateAuth']);
+    Route::post('broadcasting/auth', [SocketController::class, 'broadcastingPresenceAuth']);
 
     Route::prefix('user')->name('user.')->group(function () {
         Route::middleware(['admin'])->group(function () {

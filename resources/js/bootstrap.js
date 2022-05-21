@@ -36,6 +36,26 @@ window.Chart = Chart;
  * a simple convenience so we don't have to attach every token manually.
  */
 
+import Echo from "laravel-echo"
+
+console.log(process.env.MIX_WS_HOST, window.location.host, )
+
+window.Pusher = require('pusher-js');
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: process.env.MIX_PUSHER_APP_KEY,
+    wsHost: process.env.NODE_ENV === 'development' ? process.env.MIX_WS_HOST : window.location.host,
+    wsPort: process.env.MIX_WS_PORT,
+    wssPort: process.env.MIX_WSS_PORT,
+    enabledTransports: ['ws', 'wss'],
+    disableStats: true,
+    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    ...(process.env.NODE_ENV === 'development' ? { forceTLS: false } : {}),
+});
+
+window.Echo.connector.pusher.config.authEndpoint = '/broadcasting/auth';
+
+
 let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {

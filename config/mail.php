@@ -78,6 +78,10 @@ return [
                 'log',
             ],
         ],
+
+        'sendinblue' => [
+            'transport' => 'sendinblue',
+        ],
     ],
 
     /*

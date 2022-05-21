@@ -1,7 +1,7 @@
 <nav id="navbar-example2" class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top custom-nav">
   <div class="{{ !$dashboard ? 'container' : 'container-fluid' }}">
     @if($dashboard)
-    <div class="custom-menu me-3">
+    <div class="custom-menu me-3 d-sm-block d-md-none d-lg-none">
       <button type="button" id="sidebarCollapse" class="btn btn-link text-decoration-none">
         <i class="fa fa-bars"></i>{{'  '}}Menu
       </button>

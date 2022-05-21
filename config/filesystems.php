@@ -51,6 +51,12 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+
+            'visibility' => 'public',
+            'options' => [
+                'CacheControl' => 'max-age=315360000, no-transform, public',
+            ],
+
         ],
 
     ],

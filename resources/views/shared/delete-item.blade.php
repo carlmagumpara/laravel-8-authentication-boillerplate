@@ -12,7 +12,7 @@
           <p>Select "Confirm" below if you are continue this action.</p>
         </div>
         <div class="modal-footer border-0">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
           <button type="submit" class="btn btn-danger">Confirm</button>
         </div>
       </div>

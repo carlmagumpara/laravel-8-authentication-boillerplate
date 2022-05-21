@@ -34,11 +34,12 @@
         </div>
       </div>
     </div>
-    @yield('javascript')
     <div id="loading" class="d-none">
       <div id="loading-image">
         <h1><i class="fas fa-spinner"></i></h1>
       </div>
     </div>
+    @include('shared.socket')
+    @yield('javascript')
   </body>
 </html>

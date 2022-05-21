@@ -57,7 +57,7 @@ class LoginController extends Controller
             Auth::login($user);
 
             return response()->json([
-                'redirect_url' => ! empty($request->quiz_code) ? redirect(route('quiz.start.quiz.landing', $request->quiz_code))->getTargetUrl() : redirect(route('dashboard.index'))->getTargetUrl(),
+                'redirect_url' => redirect(route('dashboard.index'))->getTargetUrl(),
                 'message' => 'You are logged in!',
                 'dont_show_alert' => true,
                 'success' => true,
