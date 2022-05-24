@@ -41,7 +41,6 @@ class RegisterController extends Controller
         try {
             $verification = DB::transaction(function () use ($request) {
                 $user = User::create($request->except(['password_confirmation']));
-                $user->quizSetting()->create([]);
 
                 return $this->authentication->generateTokenCode($user);
              });
@@ -53,6 +52,7 @@ class RegisterController extends Controller
                 'success' => true,
             ], 200);
         } catch (\Exception $e) {
+            \Log::info($e);
             return response()->json([
                 'message' => 'Register details are not valid.',
                 'success' => false,

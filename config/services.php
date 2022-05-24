@@ -35,4 +35,12 @@ return [
         'key_identifier' => env('SENDINBLUE_KEY_IDENTIFIER', 'api-key'),
         'key' => env('SENDINBLUE_KEY'),
     ],
+
+    'twilio' => [
+        'account_sid' => env('TWILIO_ACCOUNT_S_ID', ''),
+        'auth_token' => env('TWILIO_AUTH_TOKEN', ''),
+        'phone_number' => env('TWILIO_PHONE_NUMBER', ''),
+        'api_key_sid' => env('TWILIO_KEY_S_ID', ''),
+        'api_key_secret' => env('TWILIO_KEY_SECRET', ''),
+    ],
 ];

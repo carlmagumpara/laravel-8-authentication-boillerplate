@@ -10,6 +10,7 @@
         <div class="card-body">
           <form method="POST" action="{{ route('register') }}" data-ajax="true">
             @csrf
+            <input type="hidden" name="role_id" value="1">
             <div class="form-floating mb-3">
               <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" autocomplete="first_name" autofocus placeholder="{{ __('First Name') }}">
               <label for="first_name" class="">{{ __('First Name') }}</label>

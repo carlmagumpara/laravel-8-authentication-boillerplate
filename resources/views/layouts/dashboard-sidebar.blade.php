@@ -1,4 +1,10 @@
 <nav id="sidebar">
+  <div class="p-3 d-flex justify-content-center align-items-center flex-column">
+    <img src="{{ Auth::user()->photo }}" width="100" height="100" class="rounded-circle mx-2 bg-secondary mb-3 border">
+    <h5>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h5>
+    <p class="mb-0">{{ Auth::user()->role->name }}</p>
+  </div>
+  <hr>
   <ul class="nav nav-pills flex-column mb-auto p-3">
     <li>
       <a href="{{ route('dashboard.index') }}" class="nav-link link-dark hvr-underline-from-left w-100 {{ Route::currentRouteName() === 'dashboard.index' ? 'active' : '' }}">
@@ -50,5 +56,4 @@
   <form id="logout-form-2" action="{{ route('logout') }}" method="POST" class="d-none">
     @csrf
   </form>
-  <hr>
 </nav>

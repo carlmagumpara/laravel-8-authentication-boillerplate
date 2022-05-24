@@ -14,7 +14,7 @@
         <div class="counter hvr-grow w-100 d-flex justify-content-between align-items-center p-3">
           <img src="{{ asset('images/icons/team-2.png') }}" class="fa-2x me-2">
           <div>
-            <h2 class="timer count-title count-number" data-to="100" data-speed="1500">0</h2>
+            <h2 class="timer count-title count-number" data-to="100" data-speed="1500">{{ $users_count }}</h2>
             <p class="count-text ">Users</p>
           </div>
         </div>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
-use App\Models\{ User, Take, Quiz, QuizCategory, TakeAnswer };
+use App\Models\{ User };
 use App\Http\Requests\{ UserRequest, UserUpdateRequest };
 use Hash;
 use App\Helpers\Utils;
@@ -97,19 +97,8 @@ class UserController extends Controller
     {
         $data = User::find($id);
 
-        if ($data->role->slug === 'admin' || $data->role->slug === 'teacher') {
-            return view('errors.404');
-        }
-
-        $takes = Take::where(['user_id' => $id])->pluck('id');
-
         return view('user.show', [
             'user' => $data,
-            'score' => $data->takes->sum('score'),
-            'correct' => TakeAnswer::whereIn('take_id', $takes)->distinct('quiz_question_id')->where(['correct' => true])->count(),
-            'list' => Take::where(['user_id' => $id])->latest()->paginate(3),
-            'quiz' => Quiz::where(['privacy' => 'Public'])->latest()->paginate(3),
-            'categories' => QuizCategory::all(),
         ]);
     }
 
@@ -137,6 +126,8 @@ class UserController extends Controller
             $request->merge([
                 'password' => Hash::make($request->password),
             ]);
+        } else {
+            $request->request->remove('password');
         }
 
         User::find($id)->update($request->all());
