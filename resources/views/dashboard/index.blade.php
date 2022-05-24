@@ -56,7 +56,7 @@
   </div>
   <div class="row mb-4">
     <div class="col-md-12 d-flex align-items-stretch">
-      <div class="card w-100 border-0 shadow-sm mb-3">
+      <div class="card w-100 border-0 shadow-sm mb-3" style="min-height: 450px;">
         <div class="card-header bg-white border-0">
           Latest Registration Chart
         </div>

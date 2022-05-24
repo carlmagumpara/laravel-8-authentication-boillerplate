@@ -33,7 +33,7 @@
       </div>
       <div class="card-body">
         <div id="datas">
-            @include('user.list')
+          @include('user.list')
         </div>
       </div>
     </div>

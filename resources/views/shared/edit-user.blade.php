@@ -78,7 +78,7 @@
             ],
             'formGroupClass' => 'mb-3'
           ])
-          <div class="alert alert-primary" role="alert">
+<!--           <div class="alert alert-primary" role="alert">
             Leave this empty if you want to unchanged password.
           </div>
           @include('generate.input', [
@@ -94,7 +94,7 @@
             'name' => 'password_confirmation',
             'value' => '',
             'formGroupClass' => 'mb-3'
-          ])
+          ]) -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
