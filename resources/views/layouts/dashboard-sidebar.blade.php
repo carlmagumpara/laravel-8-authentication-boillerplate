@@ -4,7 +4,6 @@
     <h5>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h5>
     <p class="mb-0">{{ Auth::user()->role->name }}</p>
   </div>
-  <hr>
   <ul class="nav nav-pills flex-column mb-auto p-3">
     <li>
       <a href="{{ route('dashboard.index') }}" class="nav-link link-dark w-100 {{ Route::currentRouteName() === 'dashboard.index' ? 'active' : '' }}">
@@ -40,7 +39,7 @@
       </a>
     </li>
     @endif
-    <li class="d-sm-block d-md-none d-lg-none">
+    <li>
       <a href="{{ route('profile.index') }}" class="nav-link link-dark w-100 {{ Route::currentRouteName() === 'profile.index' ? 'active' : '' }}">
         <i class="fa fa-user" style="width: 18px;"></i>
         <span class="ms-2">Profile</span>

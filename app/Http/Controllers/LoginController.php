@@ -30,6 +30,8 @@ class LoginController extends Controller
 
     public function logIn(LoginRequest $request)
     {
+        \Log::info($request->wantsJson());
+
         $user = User::where(['email' => $request->email])->first();
 
         if (! $user) {
