@@ -101,117 +101,33 @@ $(document).ready(function() {
       try {
         const response = await axios.post($(this).attr('action'), data);
 
-        if (submit_button.hasClass('submit-answer')) {
-          if (window.questionTimerId) {
-            clearTimeout(window.questionTimerId);
-          }
-
-          if (response.data.success) {
-            if (response?.data?.dont_show_alert) {
-              if (response.data.redirect_url) {
-                window.location.href = response.data.redirect_url;
-              }
-            } else {
-
-              if (response.data?.is_correct) {
-                if (window.callBackIfCorrect) {
-                  window.callBackIfCorrect();
-                }
-              } else {
-                if (window.callBackIfWrong) {
-                  window.callBackIfWrong();
-                }
-              }
-
-              if (response.data?.has_winning_steak) {
-                new swal({
-                  html: `
-                    <h1 class="text-danger mb-2">Steak!!! <br /> Choose Your Power Up!</h1>
-                    <img src="/images/power-ups.png" class="img-fluid">
-                  `,
-                  input: 'radio',
-                  width: 600,
-                  inputOptions: response.data?.power_ups?.reduce((obj, item) => Object.assign(obj, { [item.id]: item.name}), {}),
-                  inputValidator: (value) => {
-                    if (!value) {
-                      return 'You need to choose something!'
-                    }
-                  },
-                  confirmButtonText: 'Submit',
-                }).then(async ({ value }) => {
-                  new swal({
-                    title: 'Do you want to use it?',
-                    icon: 'success',
-                    showCancelButton: true,
-                    confirmButtonText: 'Use',
-                    cancelButtonText: 'Later',
-                  }).then(async (result) => {
-                    if (result.isConfirmed) {
-                      await axios.post(response.data.power_up_url, { 
-                        quiz_question_id: response.data.quiz_question_id, 
-                        power_up_id: value, 
-                        take_id: response.data.take_id,
-                        quiz_id: response.data.quiz_id,
-                      });
-                    } else {
-                      await axios.post(response.data.power_up_url, {
-                        power_up_id: value, 
-                        take_id: response.data.take_id,
-                        quiz_id: response.data.quiz_id,
-                      });
-                    }
-                    window.location.reload();
-                  });
-                });
-              } else {
-                new swal({
-                  title: response.data?.title || 'Success!',
-                  text: response.data.message,
-                  icon: response.data?.icon || '',
-                  imageUrl: response.data?.imageUrl || '',
-                  imageWidth: 400,
-                  confirmButtonText: response.data?.confirmButtonText || 'OK',
-                }).then(function() {
-                  if (response.data.redirect_url) {
-                    window.location.href = response.data.redirect_url;
-                  }
-                });
-              }
+        if (response.data.success) {
+          if (response?.data?.dont_show_alert) {
+            if (response.data.redirect_url) {
+              updateTable();
+              // window.location.href = response.data.redirect_url;
             }
           } else {
-            new swal(
-                response.data?.title || 'Error!',
-                submit_button.data('validation') || response.data.message,
-                response.data?.result || '',
-            )
+            new swal({
+              title: response.data?.title || 'Success!',
+              text: response.data.message,
+              icon: response.data?.icon || '',
+              imageUrl: response.data?.imageUrl || '',
+              imageWidth: 400,
+              confirmButtonText: response.data?.confirmButtonText || 'OK',
+            }).then(function() {
+              if (response.data.redirect_url) {
+                updateTable();
+                // window.location.href = response.data.redirect_url;
+              }
+            });
           }
         } else {
-          if (response.data.success) {
-            if (response?.data?.dont_show_alert) {
-              if (response.data.redirect_url) {
-                window.location.href = response.data.redirect_url;
-              }
-            } else {
-              new swal({
-                title: response.data?.title || 'Success!',
-                text: response.data.message,
-                icon: response.data?.icon || '',
-                imageUrl: response.data?.imageUrl || '',
-                imageWidth: 400,
-                confirmButtonText: response.data?.confirmButtonText || 'OK',
-              }).then(function() {
-                if (response.data.redirect_url) {
-                  window.location.href = response.data.redirect_url;
-                }
-              });
-            }
-          } else {
-            new swal(
-                response.data?.title || 'Error!',
-                submit_button.data('validation') || response.data.message,
-                response.data?.result || '',
-            )
-          }
+          new swal(
+            response.data?.title || 'Error!',
+            submit_button.data('validation') || response.data.message,
+            response.data?.result || '',
+          )
         }
         hideLoader();
         submit_button.html(original_button_text);
@@ -232,7 +148,6 @@ $(document).ready(function() {
               if (orig_key.split('.').length !== 1) {
                 key = key.split('.').map((_key, index) => index ? `[${_key}]` : _key).join('');
               }
-
               if ($('input[name="'+key+'"]') && !$('input[name="'+key+'"]').hasClass('no-error-validation')) {
                 $('input[name="'+key+'"]').addClass('is-invalid');
                 $('<div id="'+key+'" class="invalid-feedback">'+formatter.format(errors[orig_key])+'</div>').insertAfter($('input[name="'+key+'"]'));
@@ -255,6 +170,15 @@ $(document).ready(function() {
     }
   });
       
+  async function updateTable() {
+    const target = $('.search-data').data('target') || '#datas';
+    showLoader();
+    const response = await axios.get(window.location.href);
+    hideLoader();
+    $('.modal').modal('hide');
+    $(target).html(response.data);
+  };
+
   function printDiv(divName) {
     var printContents = document.getElementById(divName).innerHTML;
     let w=window.open();
@@ -275,14 +199,13 @@ $(document).ready(function() {
     $('input[name="'+$(this).attr('name')+'"]').val($(this).val());
   });
 
-  var fullHeight = function() {
-
+  function fullHeight() {
     $('.js-fullheight').css('height', $(window).height());
     $(window).resize(function(){
       $('.js-fullheight').css('height', $(window).height());
     });
-
   };
+
   fullHeight();
 
   $('#sidebarCollapse').on('click', function () {
@@ -309,7 +232,7 @@ $(document).ready(function() {
     Toast.fire({
       icon: 'success',
       title: `${$(this).data('text')} Copied Successfully`,
-    })
+    });
 
   });
 });

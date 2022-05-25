@@ -9,6 +9,7 @@
         <th scope="col">Is Super Admin</th>
         @endif
         <th scope="col">Email</th>
+        <th scope="col">Gender</th>
         <th scope="col">Contact No.</th>
         <th scope="col">Date of Birth</th>
         <th scope="col">Status</th>
@@ -25,6 +26,7 @@
         <td>{{ $data->is_super ? 'Yes' : 'No' }}</td>
         @endif
         <td>{{ $data->email ?? 'N/A' }}</td>
+        <td>{{ $data->gender ?? 'N/A' }}</td>
         <td>{{ $data->contact_no ?? 'N/A' }}</td>
         <td>{{ $data->date_of_birth ?? 'N/A' }}</td>
         <td>{{ $data->deleted_at ? 'Deleted' : $data->status }}</td>

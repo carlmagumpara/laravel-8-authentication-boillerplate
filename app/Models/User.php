@@ -85,12 +85,8 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
 
     public function getPhotoAttribute($value)
     {
-        if ($this->attributes['id'] == 1) {
-            return asset('images/avatars/1.png');
-        }
-
         if (!$value) {
-            return asset('images/avatars/2.png');
+            return asset('images/avatars/user.png');
         }
 
         return $value;

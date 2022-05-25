@@ -32,7 +32,6 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $request->merge([
-            'photo' => asset('/images/avatars/tile'.Utils::generateRandomNumbersByRange(0, 15).'.png'),
             'is_active' => true,
             'status' => 'Pending',
             'password' => Hash::make($request->password),
