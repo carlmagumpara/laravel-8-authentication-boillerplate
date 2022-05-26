@@ -30,8 +30,6 @@ class LoginController extends Controller
 
     public function logIn(LoginRequest $request)
     {
-        \Log::info($request->wantsJson());
-
         $user = User::where(['email' => $request->email])->first();
 
         if (! $user) {
@@ -56,11 +54,21 @@ class LoginController extends Controller
 
         if (Hash::check($request->password, $user->password)) {
 
+            if ($request->is('api/*')) {
+                $token = $user->createToken('API TOKEN');
+                return response()->json([
+                    'token' => $token->plainTextToken,
+                    'user' => $user,
+                    'message' => 'Log in successfully.',
+                    'success' => true,
+                ], 200);
+            }
+
             Auth::login($user);
 
             return response()->json([
                 'redirect_url' => redirect(route('dashboard.index'))->getTargetUrl(),
-                'message' => 'You are logged in!',
+                'message' => 'Log in successfully.',
                 'dont_show_alert' => true,
                 'success' => true,
             ], 200);

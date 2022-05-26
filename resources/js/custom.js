@@ -104,8 +104,11 @@ $(document).ready(function() {
         if (response.data.success) {
           if (response?.data?.dont_show_alert) {
             if (response.data.redirect_url) {
-              updateTable();
-              // window.location.href = response.data.redirect_url;
+              if ($('.search-data').length) {
+                updateTable();
+              } else {
+                window.location.href = response.data.redirect_url;
+              }
             }
           } else {
             new swal({
@@ -117,8 +120,11 @@ $(document).ready(function() {
               confirmButtonText: response.data?.confirmButtonText || 'OK',
             }).then(function() {
               if (response.data.redirect_url) {
-                updateTable();
-                // window.location.href = response.data.redirect_url;
+                if ($('.search-data').length) {
+                  updateTable();
+                } else {
+                  window.location.href = response.data.redirect_url;
+                }
               }
             });
           }

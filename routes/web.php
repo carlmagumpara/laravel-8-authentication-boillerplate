@@ -25,12 +25,7 @@ use App\Http\Controllers\{
     RegisterController,
     UserController,
     DashboardController,
-    QuizController,
-    QuizQuestionController,
     ProfileController,
-    LeaderboardController,
-    TakeController,
-    QuizCategoryController,
     FaqController,
     SocketController,
 };
